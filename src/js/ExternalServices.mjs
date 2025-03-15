@@ -8,17 +8,17 @@ async function handleResponse(res) {
 
 export default class ExternalServices {
   async getData(category) {
-    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/products/search/${category}`);
+    const response = await fetch(`https://wdd330-backend.onrender.com/products/search/${category}`);
     return (await handleResponse(response)).Result;
   }
 
   async findProductById(id) {
-    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/product/${id}`);
+    const response = await fetch(`https://wdd330-backend.onrender.com/product/${id}`);
     return (await handleResponse(response)).Result;
   }
 
   async searchByTerm(term) {
-    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/products/search?term=${term}`);
+    const response = await fetch(`https://wdd330-backend.onrender.com/products/search?term=${term}`);
     return (await handleResponse(response)).Result;
   }
 
@@ -30,7 +30,7 @@ export default class ExternalServices {
       },
       body: JSON.stringify(payload),
     };
-    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/checkout/`, options);
+    const response = await fetch(`https://wdd330-backend.onrender.com/checkout/`, options);
     return handleResponse(response);
   }
 }
