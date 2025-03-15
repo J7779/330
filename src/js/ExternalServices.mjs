@@ -1,4 +1,3 @@
-const baseURL = `http://server-nodejs.cit.byui.edu:3000`;
 
 async function handleResponse(res) {
   if (res.ok) {
@@ -9,17 +8,17 @@ async function handleResponse(res) {
 
 export default class ExternalServices {
   async getData(category) {
-    const response = await fetch(`${baseURL}products/search/${category}`);
+    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/products/search/${category}`);
     return (await handleResponse(response)).Result;
   }
 
   async findProductById(id) {
-    const response = await fetch(`${baseURL}product/${id}`);
+    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/product/${id}`);
     return (await handleResponse(response)).Result;
   }
 
   async searchByTerm(term) {
-    const response = await fetch(`${baseURL}products/search?term=${term}`);
+    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/products/search?term=${term}`);
     return (await handleResponse(response)).Result;
   }
 
@@ -31,7 +30,7 @@ export default class ExternalServices {
       },
       body: JSON.stringify(payload),
     };
-    const response = await fetch(`${baseURL}checkout/`, options);
+    const response = await fetch(`http://server-nodejs.cit.byui.edu:3000/checkout/`, options);
     return handleResponse(response);
   }
 }
